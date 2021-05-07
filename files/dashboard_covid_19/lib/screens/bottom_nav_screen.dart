@@ -1,3 +1,4 @@
+import 'package:dashboard_covid_19/screens/screens.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavScreen extends StatefulWidget {
@@ -7,8 +8,8 @@ class BottomNavScreen extends StatefulWidget {
 
 class _BottomNavScreenState extends State<BottomNavScreen> {
   final List _screens = [
-    Scaffold(),
-    Scaffold(),
+    HomeScreen(),
+    StatsScreen(),
     Scaffold(),
     Scaffold(),
     Scaffold(),
@@ -20,38 +21,38 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
     return Scaffold(
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) => setState(() => _currentIndex = index),
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
-        items: [Icons.home, Icons.insert_chart,Icons.event_note, Icons.info]
-            .asMap()
-            .map((key, value) => MapEntry(
-                key,
-                BottomNavigationBarItem(
-                  title: Text(''),
-                  icon: Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 6.0,
-                      horizontal: 16.0,
+          currentIndex: _currentIndex,
+          onTap: (index) => setState(() => _currentIndex = index),
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.white, //cor da barra de tarefa
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          selectedItemColor: Colors.white, //cor quando selecionado
+          unselectedItemColor: Colors.grey, //cor dos icones da barra
+          elevation: 0.0,
+          items: [Icons.home, Icons.insert_chart, Icons.event_note, Icons.info]
+              .asMap()
+              .map((key, value) => MapEntry(
+                    key,
+                    BottomNavigationBarItem(
+                      title: Text(''),
+                      icon: Container(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 6.0,
+                          horizontal: 16.0,
+                        ),
+                        decoration: BoxDecoration(
+                          color: _currentIndex == key
+                              ? Colors.blue[600]
+                              : Colors.transparent,
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: Icon(value),
+                      ),
                     ),
-                    decoration: BoxDecoration(
-                      color: _currentIndex ==key
-                          ? Colors.blue[600]
-                          :Colors.transparent,
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    child: Icon(value),
-                    ),
-                  ),
                   ))
               .values
-              .toList()
-        ),
-      );
+              .toList()),
+    );
   }
 }
