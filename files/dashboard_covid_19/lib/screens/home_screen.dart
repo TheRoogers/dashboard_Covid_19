@@ -86,17 +86,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    FlatButton.icon(
-                      // icone de ligação
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 10.0,
-                        horizontal: 20.0,
+                    TextButton.icon(
+                      //icone telefone
+                      style: TextButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 10.0,
+                          horizontal: 20.0,
+                        ),
+                        backgroundColor: Colors.red, //cor em volta do botao
+                        primary: Colors.white, // cor das letras
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
                       ),
                       onPressed: () {},
-                      color: Colors.red,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
                       icon: const Icon(
                         Icons.phone,
                         color: Colors.white,
@@ -105,19 +108,20 @@ class _HomeScreenState extends State<HomeScreen> {
                         'Ligue Agora',
                         style: Styles.buttonTextStyle,
                       ),
-                      textColor: Colors.white,
                     ),
-                    FlatButton.icon(
-                      //icone de mensagem
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 10.0,
-                        horizontal: 20.0,
+                    TextButton.icon(
+                      style: TextButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 10.0,
+                          horizontal: 20.0,
+                        ),
+                        backgroundColor: Colors.blue, // cor do botao
+                        primary: Colors.white, //cor das letras do botao
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
                       ),
                       onPressed: () {},
-                      color: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
                       icon: const Icon(
                         Icons.chat_bubble,
                         color: Colors.white,
@@ -126,7 +130,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         'Enviar SMS',
                         style: Styles.buttonTextStyle,
                       ),
-                      textColor: Colors.white,
                     ),
                   ],
                 )
@@ -145,6 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            SizedBox(height: 25), //distancia do bloco de cima
             Text(
               'Dicas de Prevenção',
               style: const TextStyle(
@@ -184,15 +188,47 @@ class _HomeScreenState extends State<HomeScreen> {
     return SliverToBoxAdapter(
       child: Container(
         margin: const EdgeInsets.symmetric(
-          vertical: 10.0,
+          vertical: 25.0, //distancia do bloco de cima
           horizontal: 20.0,
         ),
         padding: const EdgeInsets.all(10.0),
         height: screenHeight * 0.15,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xFFAD9FE4), Palette.primaryColor],
-          ),
+            gradient: LinearGradient(
+              colors: [Color(0xFFAD9FE4), Palette.primaryColor],
+            ),
+            borderRadius: BorderRadius.circular(20.0)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Image.asset('assets/images/own_test.png'),
+            Column(
+              mainAxisAlignment: MainAxisAlignment
+                  .center, //posiciona o texto no centro do widget
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  'Faça o teste você mesmo!',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  height: screenHeight * 0.01,
+                ),
+                Text(
+                  'Siga as instruções para fazer\no seu proprio teste',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.0,
+                  ),
+                  maxLines: 2,
+                ),
+              ],
+            )
+          ],
         ),
       ),
     );
