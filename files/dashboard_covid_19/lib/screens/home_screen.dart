@@ -52,14 +52,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                CountryDropdown(
+                CountryDropdown( // bandeiras
                   countries: ['BR', 'CN', 'FR', 'IN', 'IT', 'UK', 'USA'],
                   country: _country,
                   onChanged: (val) => setState(() => _country = val),
                 ),
               ],
             ),
-            SizedBox(height: screenHeight * 0.03),
+            SizedBox(height: screenHeight * 0.03),//distancia da palavra covid
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -87,21 +87,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     TextButton.icon(
-                      //icone telefone
                       style: TextButton.styleFrom(
                         padding: const EdgeInsets.symmetric(
                           vertical: 10.0,
                           horizontal: 20.0,
                         ),
                         backgroundColor: Colors.red, //cor em volta do botao
-                        primary: Colors.white, // cor das letras
+                        primary: Colors.white, // cor das letras do botao
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
                       ),
                       onPressed: () {},
                       icon: const Icon(
-                        Icons.phone,
+                        Icons.phone, //icone telefone
                         color: Colors.white,
                       ),
                       label: Text(
@@ -115,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           vertical: 10.0,
                           horizontal: 20.0,
                         ),
-                        backgroundColor: Colors.blue, // cor do botao
+                        backgroundColor: Colors.blue, // cor em volta do botao
                         primary: Colors.white, //cor das letras do botao
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
@@ -123,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       onPressed: () {},
                       icon: const Icon(
-                        Icons.chat_bubble,
+                        Icons.chat_bubble,// icone sms
                         color: Colors.white,
                       ),
                       label: Text(
@@ -141,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  SliverToBoxAdapter _buildPreventionTips(double screenHeight) {
+  SliverToBoxAdapter _buildPreventionTips(double screenHeight) {// bloco dicas de prevencao
     return SliverToBoxAdapter(
       child: Container(
         padding: const EdgeInsets.all(20.0),

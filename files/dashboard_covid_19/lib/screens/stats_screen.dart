@@ -1,6 +1,7 @@
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:dashboard_covid_19/config/palette.dart';
 import 'package:dashboard_covid_19/config/styles.dart';
+import 'package:dashboard_covid_19/data/data.dart';
 import 'package:dashboard_covid_19/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -14,12 +15,25 @@ class _StatsScreenState extends State<StatsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.primaryColor,
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(), // design barra superior
       body: CustomScrollView(
         physics: ClampingScrollPhysics(),
         slivers: <Widget>[
           _buildHeader(),
           _buildRegionTabBar(),
+          _buildStatsTabBar(),
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            sliver: SliverToBoxAdapter(
+              child: StatsGrid(),
+            ),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.only(top: 20.0),
+            sliver: SliverToBoxAdapter(
+              child: CovidBarChart(covidCases: covidUSADailyNewCases),
+            ),
+          ),
         ],
       ),
     );
@@ -64,6 +78,25 @@ class _StatsScreenState extends State<StatsScreen> {
               Text('Meu País'),
               Text('Global'),
             ],
+            onTap: (index) {},
+          ),
+        ),
+      ),
+    );
+  }
+
+  SliverPadding _buildStatsTabBar() {
+    return SliverPadding(
+      padding: const EdgeInsets.all(5.0),
+      sliver: SliverToBoxAdapter(
+        child: DefaultTabController(
+          length: 3,
+          child: TabBar(
+            indicatorColor: Colors.transparent,
+            labelStyle: Styles.tabTextStyle,
+            labelColor: Colors.white,
+            unselectedLabelColor: Colors.white60,
+            tabs: <Widget>[Text('Total'), Text('Hoje'), Text('Ontem')],
             onTap: (index) {},
           ),
         ),
