@@ -203,8 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             Image.asset('assets/images/own_test.png'),
             Column(
-              mainAxisAlignment: MainAxisAlignment
-                  .center, //posiciona o texto no centro do widget
+              mainAxisAlignment: MainAxisAlignment.center, //posiciona o texto no centro do widget
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
