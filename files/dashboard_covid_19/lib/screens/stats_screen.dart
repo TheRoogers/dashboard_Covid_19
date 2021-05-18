@@ -22,16 +22,16 @@ class _StatsScreenState extends State<StatsScreen> {
           _buildHeader(),
           _buildRegionTabBar(),
           _buildStatsTabBar(),
-          SliverPadding(
+          SliverPadding(// campos coloridos
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             sliver: SliverToBoxAdapter(
-              child: StatsGrid(),
+              child: StatsGrid(),// puxando o widget da outra pasta
             ),
           ),
-          SliverPadding(
+          SliverPadding(//grafico
             padding: const EdgeInsets.only(top: 20.0),
             sliver: SliverToBoxAdapter(
-              child: CovidBarChart(covidCases: covidUSADailyNewCases),
+              child: CovidBarChart(covidCases: covidUSADailyNewCases),//puxando o widget e o data.dart
             ),
           ),
         ],
@@ -54,7 +54,7 @@ class _StatsScreenState extends State<StatsScreen> {
     );
   }
 
-  SliverToBoxAdapter _buildRegionTabBar() {
+  SliverToBoxAdapter _buildRegionTabBar() { //meupais e global
     return SliverToBoxAdapter(
       child: DefaultTabController(
         length: 2,

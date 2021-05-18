@@ -10,7 +10,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   final List _screens = [
     HomeScreen(),
     StatsScreen(),
-    Scaffold(),
+    VaccineScreen(),
     Scaffold(),
     Scaffold(),
   ];
@@ -30,7 +30,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
           selectedItemColor: Colors.white, //cor quando selecionado
           unselectedItemColor: Colors.grey, //cor dos icones da barra
           elevation: 0.0,
-          items: [Icons.home, Icons.insert_chart, Icons.event_note, Icons.info]
+          items: [Icons.home, Icons.insert_chart, Icons.medical_services_rounded, Icons.info]
               .asMap()
               .map((key, value) => MapEntry(
                     key,

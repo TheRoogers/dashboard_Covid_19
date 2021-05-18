@@ -10,7 +10,7 @@ class CovidBarChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 402.0, // tamanho da tela do celular
+      height: 410.0, // tamanho da tela do celular
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -42,23 +42,23 @@ class CovidBarChart extends StatelessWidget {
                           margin: 10.0,
                           showTitles: true,
                           textStyle: Styles.chartLabelsTextStyle,
-                          rotateAngle: 35.0,
+                          rotateAngle: -35.0,
                           getTitles: (double value) {
                             switch (value.toInt()) {
                               case 0:
-                                return 'May 24';
+                                return '24/05';
                               case 1:
-                                return 'May 25';
+                                return '25/05';
                               case 2:
-                                return 'May 26';
+                                return '26/05';
                               case 3:
-                                return 'May 27';
+                                return '27/05';
                               case 4:
-                                return 'May 28';
+                                return '28/05';
                               case 5:
-                                return 'May 29';
+                                return '29/05';
                               case 6:
-                                return 'May 30';
+                                return '30/05';
                               default:
                                 return '';
                             }

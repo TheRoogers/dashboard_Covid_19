@@ -20,7 +20,7 @@ class StatsGrid extends StatelessWidget {
               children: <Widget>[
                 _buildStatCard('Recuperados', '391 K', Colors.green),
                 _buildStatCard('Infectados', '1.31 M', Colors.lightBlue),
-                _buildStatCard('Critical', 'N/A', Colors.purple),
+                _buildStatCard('Critico', 'N/A', Colors.purple),
               ],
             ),
           ),
