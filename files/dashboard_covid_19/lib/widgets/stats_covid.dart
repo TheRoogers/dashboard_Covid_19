@@ -75,29 +75,40 @@ import 'package:http/http.dart' as http;
         padding: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
             color: color, borderRadius: BorderRadius.circular(10.0)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(// stilo dos titulos
-              title,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 15.0,
-                fontWeight: FontWeight.w600,
+            child: carregado// msg de carregamento
+            ? Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(// stilo dos titulos
+                    title,
+                    style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text( // stilo dos dados
+                    count,
+                    style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,                
+                    ),
+                  ),
+                ],
               ),
-            ),
-            Text(
-              count,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                
-              ),
-            ),
-          ],
-        ),
+            )
+            : Container(
+                child: Text("Carregando...",
+                  style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.bold
+                  ),
+                )
+              )
       ),
     );
   }
