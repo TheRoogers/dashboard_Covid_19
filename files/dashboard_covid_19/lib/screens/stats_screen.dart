@@ -23,9 +23,9 @@ class _StatsScreenState extends State<StatsScreen> {
           _buildRegionTabBar(),
           _buildStatsTabBar(),
           SliverPadding(// campos coloridos
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+           padding: const EdgeInsets.symmetric(horizontal: 20.0),
             sliver: SliverToBoxAdapter(
-              child: StatsGrid(),// puxando o widget da outra pasta
+              child: CovidStats(),// puxando o widget da outra pasta
             ),
           ),
           SliverPadding(//grafico
@@ -54,7 +54,7 @@ class _StatsScreenState extends State<StatsScreen> {
     );
   }
 
-  SliverToBoxAdapter _buildRegionTabBar() { //meupais e global
+  SliverToBoxAdapter _buildRegionTabBar() { //brasil e mundo
     return SliverToBoxAdapter(
       child: DefaultTabController(
         length: 2,
@@ -75,8 +75,8 @@ class _StatsScreenState extends State<StatsScreen> {
             labelColor: Colors.black,
             unselectedLabelColor: Colors.white,
             tabs: <Widget>[
-              Text('Meu País'),
-              Text('Global'),
+              Tab (text:'Brasil'),
+              Tab (text:'Mundo'),
             ],
             onTap: (index) {},
           ),
@@ -85,7 +85,7 @@ class _StatsScreenState extends State<StatsScreen> {
     );
   }
 
-  SliverPadding _buildStatsTabBar() {
+  SliverPadding _buildStatsTabBar() {// total hoje ontem
     return SliverPadding(
       padding: const EdgeInsets.all(5.0),
       sliver: SliverToBoxAdapter(

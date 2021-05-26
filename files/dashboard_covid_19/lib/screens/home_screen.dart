@@ -10,7 +10,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String _country = 'BR';
 
   @override
   Widget build(BuildContext context) {
@@ -51,11 +50,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontSize: 25.0,
                     fontWeight: FontWeight.bold,
                   ),
-                ),
-                CountryDropdown( // bandeiras
-                  countries: ['BR', 'CN', 'FR', 'IN', 'IT', 'UK', 'USA'],
-                  country: _country,
-                  onChanged: (val) => setState(() => _country = val),
                 ),
               ],
             ),
@@ -206,7 +200,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'Faça o teste você mesmo!',
+                  'Procure um hospital',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18.0,
@@ -217,7 +211,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: screenHeight * 0.01,
                 ),
                 Text(
-                  'Siga as instruções para fazer\no seu proprio teste',
+                  'Caso tenha dores no peito ou sensação\n de aperto, ou desconforto ao respirar',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16.0,
