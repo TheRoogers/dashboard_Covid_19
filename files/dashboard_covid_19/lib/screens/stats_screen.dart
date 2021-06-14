@@ -72,7 +72,7 @@ class _StatsScreenState extends State<StatsScreen> {
                 _buildHeader(),
                 _buildRegionTabBar(),
                 SliverPadding(// campos coloridos
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   sliver: SliverToBoxAdapter(
                     child: CovidStats(),// puxando o widget da outra pasta
                   ),
@@ -93,7 +93,7 @@ class _StatsScreenState extends State<StatsScreen> {
           _buildHeader(),
           _buildRegionTabBar(),
           SliverPadding(// campos coloridos
-           padding: const EdgeInsets.symmetric(horizontal: 20.0),
+           padding: const EdgeInsets.symmetric(horizontal: 10.0),
             sliver: SliverToBoxAdapter(
               child: CovidStatsWorld(),// puxando o widget da outra pasta
             ),

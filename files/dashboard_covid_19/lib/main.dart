@@ -1,3 +1,4 @@
+import 'package:dashboard_covid_19/screens/login.page.dart';
 import 'package:flutter/material.dart';
 import 'package:dashboard_covid_19/screens/screens.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: BottomNavScreen(),
+      home: LoginPage(),
     );
   }
 }

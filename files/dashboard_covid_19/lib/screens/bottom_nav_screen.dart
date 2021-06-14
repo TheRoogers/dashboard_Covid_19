@@ -8,7 +8,7 @@ class BottomNavScreen extends StatefulWidget {
 
 class _BottomNavScreenState extends State<BottomNavScreen> {
   final List _screens = [
-    HomeScreen(),
+    HomeScreen(),    
     StatsScreen(),
     VaccineScreen(),
     Scaffold(),

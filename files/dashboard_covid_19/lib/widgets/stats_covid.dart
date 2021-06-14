@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
   class CovidStats extends StatefulWidget {
     @override
@@ -8,11 +9,12 @@ import 'package:http/http.dart' as http;
   }
   
   class CovidStatsState extends State<CovidStats> {
-  int totalCases;
-  int totalDeaths;
-  int totalRecovered;
-  int activeCases;
-  int criticalCases;
+  final formatter = NumberFormat("###,###.##", "pt_BR");
+  num totalCases = 0;
+  num totalDeaths = 0;
+  num totalRecovered = 0;
+  num activeCases = 0;
+  num criticalCases = 0;
   bool carregado = false;
 
   getInfoCoronaBrazil() async {
@@ -42,24 +44,24 @@ import 'package:http/http.dart' as http;
     
     @override
     Widget build(BuildContext context) {
-      return Container(        
+      return Container(                
         height: MediaQuery.of(context).size.height * 0.25,
         child: Column(
           children: <Widget>[
             Flexible(
               child: Row(
                 children: <Widget>[
-                 _buildStatCard('Total de Casos', totalCases.toString(), Colors.orange),
-                  _buildStatCard('Mortes', totalDeaths.toString(), Colors.red),
+                 _buildStatCard('Total de Casos', formatter.format(totalCases), Colors.orange),
+                  _buildStatCard('Mortes', formatter.format(totalDeaths), Colors.red),
                 ],
               ),
             ),
             Flexible(
               child: Row(
                 children: <Widget>[
-                 _buildStatCard('Recuperados', totalRecovered.toString(), Colors.green),
-                  _buildStatCard('Infectados', activeCases.toString(), Colors.lightBlue),
-                  _buildStatCard('Critico', criticalCases.toString(), Colors.purple),
+                 _buildStatCard('Recuperados', formatter.format(totalRecovered), Colors.green),
+                  _buildStatCard('Infectados', formatter.format(activeCases), Colors.lightBlue),
+                  _buildStatCard('Critico', formatter.format(criticalCases), Colors.purple),
                 ],
               ),
             ),
