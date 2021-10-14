@@ -18,12 +18,12 @@ class CovidStatsWorldState extends State<CovidStatsWorld> {
   bool carregado = false;
 
   getInfoCoronaWorld() async {
-    String url = "https://api.quarantine.country/api/v1/summary/latest";
+    String url = "https://corona.lmao.ninja/v2/all";
     http.Response response;
     response = await http.get(url);
     if (response.statusCode == 200) {
       var decodeJson = jsonDecode(response.body);
-      return (decodeJson['data']['summary']);
+      return (decodeJson);
     }
   }
 
@@ -32,10 +32,10 @@ class CovidStatsWorldState extends State<CovidStatsWorld> {
     super.initState();
     getInfoCoronaWorld().then((map) {
       setState(() {
-        totalCases = map['total_cases'];
+        totalCases = map['cases'];
         totalDeaths = map['deaths'];
         totalRecovered = map['recovered'];
-        activeCases = map['active_cases'];
+        activeCases = map['active'];
         criticalCases = map['critical'];
         carregado = true;
       });
@@ -78,7 +78,7 @@ class CovidStatsWorldState extends State<CovidStatsWorld> {
     return Expanded(
       child: Container(
           margin: const EdgeInsets.all(8.0),
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(5.2),
           decoration: BoxDecoration(
               color: color, borderRadius: BorderRadius.circular(10.0)),
           child: carregado // msg de carregamento
@@ -100,7 +100,7 @@ class CovidStatsWorldState extends State<CovidStatsWorld> {
                         count,
                         style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 20.0,
+                          fontSize: 18.1,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

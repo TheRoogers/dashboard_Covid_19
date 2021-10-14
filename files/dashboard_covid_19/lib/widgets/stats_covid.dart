@@ -18,12 +18,13 @@ import 'package:intl/intl.dart';
   bool carregado = false;
 
   getInfoCoronaBrazil() async {
-    String url = "https://api.quarantine.country/api/v1/summary/latest";
+    String url = "https://corona.lmao.ninja/v2/countries/bra";
     http.Response response;
     response = await http.get(url);
     if (response.statusCode == 200) {
       var decodeJson = jsonDecode(response.body);
-      return (decodeJson['data']['regions']['brazil']);
+      return (decodeJson);
+    //return (decodeJson['data']['summary']); caso seja necessario trocar a API
     }
   }
 
@@ -32,10 +33,10 @@ import 'package:intl/intl.dart';
     super.initState();
     getInfoCoronaBrazil().then((map) {
       setState(() {
-        totalCases = map['total_cases'];
+        totalCases = map['cases'];
         totalDeaths = map['deaths'];
         totalRecovered = map['recovered'];
-        activeCases = map['active_cases'];
+        activeCases = map['active'];
         criticalCases = map['critical'];
         carregado = true;
       });
@@ -74,7 +75,7 @@ import 'package:intl/intl.dart';
     return Expanded(
       child: Container(
         margin: const EdgeInsets.all(8.0),
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(5.2),
         decoration: BoxDecoration(
             color: color, borderRadius: BorderRadius.circular(10.0)),
             child: carregado// msg de carregamento
@@ -95,7 +96,7 @@ import 'package:intl/intl.dart';
                     count,
                     style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 20.0,
+                    fontSize: 18.1,
                     fontWeight: FontWeight.bold,                
                     ),
                   ),

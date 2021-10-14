@@ -3,6 +3,8 @@ import 'package:dashboard_covid_19/config/styles.dart';
 import 'package:dashboard_covid_19/data/data.dart';
 import 'package:flutter/material.dart';
 import 'package:dashboard_covid_19/widgets/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -10,7 +12,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -25,6 +26,25 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
     );
+  }
+
+  fazerLigacao() async {
+    const url = "tel:136";
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  abrirWhatsApp() async {
+    var whatsappUrl = "whatsapp://send?phone=+556199380031&text=Olá,tudo bem ?";
+
+    if (await canLaunch(whatsappUrl)) {
+      await launch(whatsappUrl);
+    } else {
+      throw 'Could not launch $whatsappUrl';
+    }
   }
 
   SliverToBoxAdapter _buildHeader(double screenHeight) {
@@ -53,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            SizedBox(height: screenHeight * 0.03),//distancia da palavra covid
+            SizedBox(height: screenHeight * 0.03), //distancia da palavra covid
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -92,7 +112,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           borderRadius: BorderRadius.circular(30.0),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        fazerLigacao();
+                      },
                       icon: const Icon(
                         Icons.phone, //icone telefone
                         color: Colors.white,
@@ -114,13 +136,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           borderRadius: BorderRadius.circular(30.0),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        abrirWhatsApp();
+                      },
                       icon: const Icon(
-                        Icons.chat_bubble,// icone sms
+                        FontAwesomeIcons.whatsapp, // icone sms
                         color: Colors.white,
                       ),
                       label: Text(
-                        'Enviar SMS',
+                        'Enviar WhatsApp',
                         style: Styles.buttonTextStyle,
                       ),
                     ),
@@ -134,7 +158,8 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  SliverToBoxAdapter _buildPreventionTips(double screenHeight) {// bloco dicas de prevencao
+  SliverToBoxAdapter _buildPreventionTips(double screenHeight) {
+    // bloco dicas de prevencao
     return SliverToBoxAdapter(
       child: Container(
         padding: const EdgeInsets.all(20.0),
@@ -177,15 +202,16 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  SliverToBoxAdapter _buildYourOwnTest(double screenHeight) {//bloco faca seu teste
+  SliverToBoxAdapter _buildYourOwnTest(double screenHeight) {
+    //bloco faca seu teste
     return SliverToBoxAdapter(
       child: Container(
         margin: const EdgeInsets.symmetric(
-          vertical: 25.0, //distancia do bloco de cima
+          vertical: 15.0, //distancia do bloco de cima
           horizontal: 20.0,
         ),
-        padding: const EdgeInsets.all(10.0),
-        height: screenHeight * 0.15,
+        padding: const EdgeInsets.all(15.0),
+        height: screenHeight * 0.20,
         decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [Color(0xFFAD9FE4), Palette.primaryColor],
@@ -196,7 +222,8 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             Image.asset('assets/images/own_test.png'),
             Column(
-              mainAxisAlignment: MainAxisAlignment.center, //posiciona o texto no centro do widget
+              mainAxisAlignment: MainAxisAlignment
+                  .center, //posiciona o texto no centro do widget
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
@@ -211,12 +238,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: screenHeight * 0.01,
                 ),
                 Text(
-                  'Caso tenha dores no peito ou sensação\n de aperto, ou desconforto ao respirar',
+                  'Caso tenha dores no peito,\n sensação de aperto, ou\n desconforto ao respirar',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16.0,
                   ),
-                  maxLines: 2,
+                  maxLines: 3,
                 ),
               ],
             )
